@@ -290,3 +290,35 @@ i {
         padding: 15px;
     }
 }
+/* --- GATITO EN LA ESQUINA --- */
+#gatito-esquina {
+    position: fixed; /* Lo deja fijo aunque ella haga scroll */
+    bottom: 20px;    /* Distancia desde abajo */
+    right: 20px;     /* Distancia desde la derecha */
+    width: 100px;    /* Ajusta este tamaño si tu GIF es muy grande o pequeño */
+    z-index: 100;    /* Para que esté por encima del fondo */
+    opacity: 0;      /* Inicia oculto */
+    transition: opacity 2s ease;
+    pointer-events: none; /* Para que no interfiera si ella toca la pantalla ahí */
+}
+
+/* Esta clase se la agregaremos con JS cuando abra la carta */
+#gatito-esquina.gatito-visible {
+    opacity: 0.9;
+}
+#gatito-esquina-izq {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;      /* ¡Aquí está la magia, lo pegamos a la izquierda! */
+    width: 100px;    /* Ajusta si este GIF es de distinto tamaño */
+    z-index: 100;
+    opacity: 0;
+    transition: opacity 2s ease;
+    pointer-events: none;
+    /* transform: scaleX(-1); */ /* Quita los de // si quieres que el gatito mire hacia el centro */
+}
+
+/* La clase para hacerlo aparecer */
+#gatito-esquina-izq.gatito-visible {
+    opacity: 0.9;
+}
