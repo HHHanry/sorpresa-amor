@@ -7,25 +7,34 @@ document.addEventListener('DOMContentLoaded', () => {
     const cerrarFoto = document.getElementById('cerrar-foto');
     let cartaAbierta = false;
 
-    function crearCorazon(x, y) {
-        const corazon = document.createElement('div');
-        corazon.innerHTML = '❤️';
-        corazon.classList.add('corazon');
-        
-        // Variar el tipo de corazón aleatoriamente
-        if (Math.random() < 0.2) corazon.classList.add('hueco'); // 20% huecos
-        else if (Math.random() < 0.4) corazon.classList.add('variado'); // 20% más sutiles
+    // Función para crear flores flotantes
+function crearFlor() {
+    const flor = document.createElement('div');
+    
+    // Lista de emojis de flores para variar
+    const flores = ['🌸', '🌹', '🌻', '🌺', '🌷', '🌼'];
+    // Elige una flor aleatoria de la lista
+    flor.innerHTML = flores[Math.floor(Math.random() * flores.length)];
+    
+    flor.classList.add('corazon'); // Reutilizamos la clase CSS para que flote igual
+    
+    // Posición horizontal aleatoria (0 a 100vw)
+    flor.style.left = Math.random() * 100 + 'vw';
+    // Posición vertical inicial (cerca del fondo)
+    flor.style.top = '100vh';
+    
+    // Tamaño aleatorio para dar profundidad
+    const tamaño = Math.random() * 2 + 1;
+    flor.style.transform = `scale(${tamaño})`;
+    
+    document.body.appendChild(flor);
 
-        corazon.style.left = `${x || Math.random() * 100 + 'vw'}`; // Desde click o x aleatorio
-        corazon.style.top = `${y || Math.random() * 100 + 'vh'}`; // Desde click o y aleatorio
-        
-        const tamaño = Math.random() * 2 + 0.5; // Tamaño variado (más grande max)
-        corazon.style.transform = `scale(${tamaño})`;
-        
-        document.body.appendChild(corazon);
+    // Eliminar después de que termine la animación (4s en tu CSS actual)
+    setTimeout(() => flor.remove(), 4000); 
+}
 
-        setTimeout(() => corazon.remove(), 4000); // 4 segundos de vida
-    }
+// Para que aparezcan flores solas cada cierto tiempo
+setInterval(crearFlor, 1000); // Crea una flor cada segundo
 
     // Generar múltiples corazones iniciales suavemente al abrir la carta
     function lluviaCorazonesInicial() {
@@ -42,13 +51,19 @@ document.addEventListener('DOMContentLoaded', () => {
                 console.log("Música bloqueada, click detectado.", error);
             });
 
-            setTimeout(() => {
+           setTimeout(() => {
                 pantallaInicio.style.display = 'none';
                 contenedorCarta.classList.remove('oculto');
                 contenedorCarta.classList.add('visible');
-                lluviaCorazonesInicial(); // Iniciar lluvia corazones
+                lluviaCorazonesInicial(); 
                 
-                // Mostrar botón "Dezliza" suavemente después
+                // --- NUEVO: Mostrar al gatito ---
+               const gatitoDer = document.getElementById('gatito-esquina');
+                const gatitoIzq = document.getElementById('gatito-esquina-izq');
+                
+                if(gatitoDer) gatitoDer.classList.add('gatito-visible');
+                if(gatitoIzq) gatitoIzq.classList.add('gatito-visible');
+
                 setTimeout(() => {
                     botonDesliza.classList.remove('oculto-boton');
                     botonDesliza.classList.add('visible-boton');
