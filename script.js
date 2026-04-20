@@ -108,7 +108,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // --- FEATURE: TERMINAL TYPEWRITER (Intersection Observer) ---
-    const terminalString = ">_ Ejecución finalizada: Toca ser frío de nuevo JAJAJA";
+    const terminalString = ">_ Ejecución finalizada: Toca ser frío de nuevo xd";
     const observer = new IntersectionObserver((entries) => {
         if(entries[0].isIntersecting && !estadoApp.terminalTyped) {
             estadoApp.terminalTyped = true;
