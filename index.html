@@ -3,7 +3,99 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Para mi Lucía negra</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Lora:ital@0;1&family=Playfair+Display:ital,wght@0,600;1,600&family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    
+    <audio id="musica-fondo" loop preload="auto">
+        <source src="musica.mp3" type="audio/mpeg">
+    </audio>
+
+    <div id="pantalla-inicio" class="overlay flex-center">
+        <div class="sello-cera">
+            <i class="fas fa-fingerprint"></i>
+        </div>
+        <p class="pulse-text">Toca para desencriptar <i class="fas fa-sparkles"></i></p>
+    </div>
+
+    <main id="contenedor-carta" class="oculto flex-center">
+        <div class="glass-card">
+            <header>
+                <h2 class="titulo">Para mi Bloqueadora favorita <i class="fas fa-heart" style="color: #2c3e50; font-size: 0.8em;"></i></h2>
+                <div id="ego-badge" class="ego-badge">⚠️ Peligro: Ego Alto</div>
+                
+                <div class="toggle-container">
+                    <label class="switch">
+                        <input type="checkbox" id="luis-miguel-toggle">
+                        <span class="slider round"></span>
+                    </label>
+                    <span class="toggle-label">Vida 'e Luis Miguel</span>
+                    <div id="lm-error" class="tooltip-error oculto-tooltip">Error: Rol eliminado permanentemente 🚫</div>
+                </div>
+            </header>
+            
+            <section class="contenido-carta">
+                <p>AAAAAAAAAAAh-ahhhhhhh, <br>
+                A míiiiiiiiiiiiiiiiiii<br>
+                Me haces sentiiiiiiiiir<br>
+                Cosaaaaaaaaaaaaaaaas que nuncaaaaaaaaaaaaaaa<br>
+                Había sentiiiiiiidooooooooo <span id="no-sentido-trigger" class="glitch-word" title="Tócame">No hace sentiiiiiiiiiiiiiiiidooooooooo</span></p>
+                
+                <p>Por ti dejé la vida 'e Luis Miguel, ey<br>
+                To' los días son luna de miel<br>
+                Flor Murakami en mi <span id="murakami-trigger" class="secret-word" title="Revelar">amanecer</span><br>
+                Tú y yo lo mismo, ¿no lo puedes ver?<br>
+                Que tome una foto de David LaChapelle<br>
+                Pa' después ponerla de fondo en el cel<br>
+                Bebé tú me entiendes más<br>
+                De lo que yo me podría entender, ¿me entiendes?</p>
+                
+                <p id="terminal-text" class="humor-terminal typing-cursor"></p>
+            </section>
+
+            <footer>
+                <div class="footer-info">
+                    <p class="firma">- <i class="pinyon-script">Tu papi Hanry</i></p>
+                    <div class="visualizer">
+                        <div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div>
+                    </div>
+                </div>
+                <button id="boton-desliza" class="pro-button oculto-boton">
+                    <span>[ Ejecutar Protocolo: Rockstar ]</span>
+                    <i class="fas fa-bolt"></i>
+                </button> 
+            </footer>
+        </div>
+    </main>
+
+    <div id="contenedor-foto" class="overlay oculto flex-center">
+        <div class="modal-content">
+            <div class="error-foto-caja">
+                <i class="fas fa-image error-icono"></i>
+                <h3 class="texto-sin-foto">Foto perdida xd</h3>
+                <p class="subtexto-error">Se perdió en el celular temporal que tenía :(</p>
+            </div>
+            <p class="pinyon-script texto-despedida">Ten un bonito día ♡</p>
+            <button id="cerrar-foto" class="close-btn">Cerrar Sesión</button>
+        </div>
+    </div>
+
+    <div id="btn-90s" title="Flow de los 90s" class="oculto"><i class="fas fa-save"></i></div>
+    <div id="icono-musica"><i class="fas fa-music"></i></div>
+    <img src="imagenes/gatito1.gif" id="gatito-der" class="pet-gif" alt="Cat right">
+    <img src="imagenes/gatito2.gif" id="gatito-izq" class="pet-gif" alt="Cat left"> 
+
+    <script src="script.js"></script>
+</body>
+</html>>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Lora:ital@0;1&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
