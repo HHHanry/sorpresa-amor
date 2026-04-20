@@ -1,324 +1,140 @@
+/* === RESET Y BASE === */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+    --primary-text: #3e2723;
+    --glass-bg: rgba(255, 248, 225, 0.75);
+    --glass-border: rgba(255, 255, 255, 0.4);
+    --gold: #bfa071;
+    --vhs-filter: none;
+    --particle-direction: -110vh; 
+}
+
 body {
-    margin: 0;
-    padding: 0;
-    /* Fondo con degradado animado estilo amanecer */
-    background: linear-gradient(45deg, #f3e5dc, #ffe0b2, #f8bbd0, #f3e5dc);
-    background-size: 400% 400%;
-    animation: amanecer 15s ease infinite;
-    
-    font-family: 'Poppins', sans-serif;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-    color: #3e2723;
+    width: 100vw; height: 100vh; overflow: hidden;
+    font-family: 'Poppins', sans-serif; color: var(--primary-text);
+    background: linear-gradient(-45deg, #f3e5dc, #e8d5c4, #f8bbd0, #d5e8e4);
+    background-size: 400% 400%; animation: amanecer 15s ease infinite;
+    filter: var(--vhs-filter); transition: filter 0.5s ease;
 }
 
-/* Animación del fondo */
-@keyframes amanecer {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-}
-#icono-musica {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    font-size: 1.5rem;
-    color: #bfa071;
-    opacity: 0.6;
-    z-index: 100;
+body.murakami-mode {
+    background: linear-gradient(-45deg, #FF9A9E, #FECFEF, #FDCBF1, #FFDFD3);
+    background-size: 400% 400%; animation: amanecer 5s ease infinite; /* Más rápido y vibrante */
 }
 
-i {
-    color: #ff4d4d;
-    margin: 0 5px;
-}
+@keyframes amanecer { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
 
-#pantalla-inicio {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    z-index: 50;
-    transition: opacity 1s ease;
-}
-
-.sello-cera {
-    background-color: #bfa071;
-    background-image: url('https://www.transparenttextures.com/patterns/paper-fibers.png');
-    padding: 15px 30px;
-    border-radius: 50px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2), inset 0 0 10px rgba(255,255,255,0.5);
-    border: 2px solid #a38655;
-    transform: rotate(-5deg);
-    transition: transform 0.3s ease;
-}
-
-.sello-cera p {
-    margin: 0;
-    font-family: 'Dancing Script', cursive;
-    font-size: 1.8rem;
-    color: #5d4037;
-    display: flex;
-    align-items: center;
-}
-
-.sello-cera:hover {
-    transform: scale(1.1) rotate(0deg);
-}
-
-#contenedor-carta {
-    width: 90%;
-    max-width: 600px;
-    position: relative;
-    z-index: 10;
-    transition: opacity 2s ease, transform 2s ease;
-}
-
-.pergamino {
-    background-color: #fff8e1;
-    background-image: url('https://www.transparenttextures.com/patterns/old-map.png');
-    padding: 40px;
-    border-radius: 5px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-    position: relative;
-    border: 1px solid #d7ccc8;
-}
-
-.pergamino::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
-    box-shadow: inset 0 0 50px rgba(139, 69, 19, 0.3);
-    pointer-events: none;
-}
-
-
-/* Título principal (Elegante y legible) */
-.titulo {
-    font-family: 'Playfair Display', serif;
-    font-style: italic;
-    font-size: 2.8rem; /* Un poco más pequeño para que encaje mejor */
-    color: #5d4037;
-    margin-bottom: 15px;
-    text-align: center;
-}
-
-/* El texto de tu carta (Estilo libro antiguo, súper claro) */
-.contenido-carta p {
-    font-family: 'Lora', serif;
-    font-size: 1.15rem;
-    line-height: 1.8;
-    color: #3e2723;
-    margin-bottom: 15px;
-    text-align: justify;
-}
-
-/* Para la firma usaremos Dancing Script, que es una cursiva que sí se entiende */
-.pinyon-script {
-    font-family: 'Dancing Script', cursive;
-    font-size: 2.2rem;
-    color: #a38655;
-}
-
-/* El texto que reemplaza la foto */
-.texto-sin-foto {
-    font-family: 'Lora', serif;
-    font-size: 1.1rem;
-    font-style: italic;
-    color: #8d6e63;
-    background-color: #fbe9e7;
-    padding: 20px;
-    border-radius: 10px;
-    margin-bottom: 20px;
-}
-
-.contenido-carta p {
-    font-family: 'Poppins', sans-serif;
-    font-size: 1.1rem;
-    line-height: 1.8;
-    color: #3e2723;
-    margin-bottom: 15px;
-    text-align: justify;
-}
-
-.firma {
-    text-align: right;
-    margin-top: 30px;
-    font-size: 1.3rem;
-}
-
-.pinyon-script {
-    font-family: 'Pinyon Script', cursive;
-    font-size: 2rem;
-    color: #a38655;
-}
-
-.oculto {
-    opacity: 0;
-    transform: scale(0.9) translateY(20px);
-    pointer-events: none;
-}
-
-.visible {
-    opacity: 1;
-    transform: scale(1) translateY(0);
-    pointer-events: auto;
-}
-
-/* --- MEJORAS DE CORAZONES --- */
-@keyframes flotar-corazon {
-    0% { transform: translateY(0) scale(1); opacity: 1; }
-    50% { opacity: 0.8; } /* Variación suave */
-    100% { transform: translateY(-120vh) scale(1.8) rotate(20deg); opacity: 0; } /* Rotación y más desplazamiento */
-}
-
-.corazon {
-    position: absolute;
-    color: #ff4d4d;
-    animation: flotar-corazon 4s ease-in forwards; /* Más lento, animación más rica */
-    pointer-events: none;
-    z-index: 100; /* Asegurar que floten sobre todo */
-}
-
-/* Variar la apariencia de los corazones */
-.corazon.hueco { color: transparent; -webkit-text-stroke: 1px #ff4d4d; } /* Corazón outline */
-.corazon.variado { opacity: 0.7; } /* Corazón más sutil */
-
-
-/* --- NUEVO BOTÓN DEZLIZA --- */
-#boton-desliza {
-    background-color: #bfa071;
-    color: #5d4037;
-    font-family: 'Poppins', sans-serif;
-    font-weight: 600;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: opacity 1s ease, transform 0.3s ease;
-    display: block;
-    margin: 20px auto 0; /* Centrado debajo de la firma */
-}
-
-#boton-desliza i { color: inherit; margin-left: 10px; }
-
-#boton-desliza:hover { transform: scale(1.05); }
-
+/* === UTILS === */
+.flex-center { display: flex; justify-content: center; align-items: center; }
+.overlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: 100; }
+.oculto { opacity: 0; pointer-events: none; transform: scale(0.95); transition: all 0.6s ease; }
+.visible { opacity: 1; pointer-events: auto; transform: scale(1); transition: all 0.6s ease; }
 .oculto-boton { opacity: 0; pointer-events: none; }
-.visible-boton { opacity: 1; pointer-events: auto; }
 
+/* === PANTALLA INICIO === */
+#pantalla-inicio { background: rgba(243, 229, 220, 0.6); backdrop-filter: blur(8px); flex-direction: column; z-index: 200; }
+.sello-cera { background: var(--gold); width: 80px; height: 80px; border-radius: 50%; box-shadow: 0 10px 20px rgba(0,0,0,0.2), inset 0 0 10px rgba(255,255,255,0.3); color: white; font-size: 2.2rem; cursor: pointer; transition: transform 0.3s; display: flex; justify-content: center; align-items: center; }
+.sello-cera:hover { transform: scale(1.1); }
+.pulse-text { margin-top: 20px; font-weight: 600; animation: pulse 2s infinite; }
+@keyframes pulse { 0%, 100% { opacity: 0.6; } 50% { opacity: 1; } }
 
-/* --- SECCIÓN DE FOTO REVELADA --- */
-#contenedor-foto {
-    position: fixed; /* Fijo sobre toda la pantalla */
-    top: 0; left: 0; width: 100%; height: 100%;
-    display: flex; justify-content: center; align-items: center;
-    z-index: 150; /* Sobre la carta */
-    transition: opacity 1.5s ease;
+/* === CARTA MAIN === */
+#contenedor-carta { width: 100vw; height: 100vh; padding: 20px; z-index: 10; transition: transform 0.5s ease; }
+.glass-card { background: var(--glass-bg); backdrop-filter: blur(12px); border: 1px solid var(--glass-border); border-radius: 20px; padding: 30px; width: 100%; max-width: 550px; max-height: 90vh; display: flex; flex-direction: column; box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+header { text-align: center; margin-bottom: 15px; flex-shrink: 0; position: relative; }
+.titulo { font-family: 'Playfair Display', serif; font-size: 2.2rem; color: var(--primary-text); margin-bottom: 5px; }
+
+/* Luis Miguel Toggle */
+.toggle-container { margin-top: 15px; display: flex; align-items: center; justify-content: center; gap: 10px; position: relative; }
+.switch { position: relative; display: inline-block; width: 40px; height: 20px; }
+.switch input { opacity: 0; width: 0; height: 0; }
+.slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #ccc; transition: .4s; }
+.slider:before { position: absolute; content: ""; height: 16px; width: 16px; left: 2px; bottom: 2px; background-color: white; transition: .4s; }
+input:checked + .slider { background-color: #e74c3c; }
+input:checked + .slider:before { transform: translateX(20px); }
+.slider.round { border-radius: 20px; }
+.slider.round:before { border-radius: 50%; }
+.toggle-label { font-size: 0.85rem; font-weight: 600; color: #7f8c8d; }
+.tooltip-error { position: absolute; top: -35px; background: #e74c3c; color: white; padding: 5px 10px; border-radius: 5px; font-size: 0.75rem; font-weight: bold; white-space: nowrap; box-shadow: 0 5px 10px rgba(0,0,0,0.2); transition: all 0.3s ease; pointer-events: none; }
+.tooltip-error::after { content: ''; position: absolute; top: 100%; left: 50%; margin-left: -5px; border-width: 5px; border-style: solid; border-color: #e74c3c transparent transparent transparent; }
+.oculto-tooltip { opacity: 0; transform: translateY(10px); }
+
+/* Modo Jefa */
+.ego-badge { display: inline-block; background: #e74c3c; color: white; font-size: 0.75rem; padding: 4px 12px; border-radius: 50px; letter-spacing: 1px; text-transform: uppercase; cursor: pointer; transition: all 0.3s ease; user-select: none; }
+.ego-badge.jefa-mode { background: #2ecc71; font-family: 'Courier New', monospace; box-shadow: 0 0 15px #2ecc71; transform: scale(1.05); }
+
+/* Textos Carta */
+.contenido-carta { overflow-y: auto; padding-right: 10px; margin-bottom: 15px; }
+.contenido-carta::-webkit-scrollbar { width: 5px; }
+.contenido-carta::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 10px; }
+.contenido-carta p { font-family: 'Lora', serif; font-size: 1rem; line-height: 1.7; margin-bottom: 12px; }
+
+/* Feature 4: Terminal Observer */
+.humor-terminal { font-family: 'Courier New', monospace !important; background: #2c3e50; color: #2ecc71 !important; padding: 10px; border-radius: 5px; font-size: 0.9rem !important; min-height: 40px; }
+.typing-cursor::after { content: ' _'; animation: blink 1s infinite step-end; }
+@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+/* Feature 5: No hace sentido */
+.glitch-word { color: #d35400; font-weight: bold; cursor: pointer; text-decoration: underline wavy #bfa071; transition: all 0.3s; }
+.glitch-word:hover { color: #e74c3c; text-shadow: 2px 2px 0px rgba(0,0,0,0.1); }
+.logic-error { transform: rotate(-2deg) scale(0.98); background: rgba(0, 0, 0, 0.8); color: white !important; }
+.logic-error .titulo, .logic-error .firma, .logic-error p { color: white; }
+
+/* Feature 3: Murakami Egg */
+.secret-word { border-bottom: 1px dashed var(--gold); cursor: pointer; transition: color 0.3s; }
+.secret-word:hover { color: #e74c3c; }
+.murakami-spin { display: inline-block; animation: spin 2s linear infinite; }
+@keyframes spin { 100% { transform: rotate(360deg); } }
+
+footer { display: flex; flex-direction: column; align-items: stretch; flex-shrink: 0; }
+.footer-info { display: flex; justify-content: space-between; align-items: flex-end; }
+.firma { font-size: 1.2rem; }
+.pinyon-script { font-family: 'Dancing Script', cursive; font-size: 1.8rem; color: var(--gold); }
+
+/* Rockstar Visualizer */
+.visualizer { display: flex; gap: 3px; align-items: flex-end; height: 20px; opacity: 0.7; }
+.bar { width: 4px; background: var(--gold); border-radius: 5px; animation: bounce 1s infinite alternate; }
+.bar:nth-child(2) { animation-delay: 0.2s; } .bar:nth-child(3) { animation-delay: 0.4s; } .bar:nth-child(4) { animation-delay: 0.1s; } .bar:nth-child(5) { animation-delay: 0.5s; }
+@keyframes bounce { 0% { height: 5px; } 100% { height: 20px; } }
+
+/* Protocolo Rockstar Button */
+.pro-button { background: #2c3e50; color: white; border: none; font-family: 'Poppins', sans-serif; font-weight: 600; padding: 12px 20px; border-radius: 50px; cursor: pointer; transition: 0.3s; display: flex; align-items: center; justify-content: center; gap: 10px; margin: 15px auto 0; width: 100%; box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
+.pro-button:hover { background: #d35400; transform: translateY(-3px); }
+.shake-anim { animation: shake 0.4s cubic-bezier(.36,.07,.19,.97) both; }
+@keyframes shake { 10%, 90% { transform: translate3d(-1px, 0, 0); } 20%, 80% { transform: translate3d(2px, 0, 0); } 30%, 50%, 70% { transform: translate3d(-4px, 0, 0); } 40%, 60% { transform: translate3d(4px, 0, 0); } }
+
+/* === MODAL 404 === */
+#contenedor-foto { background: rgba(0,0,0,0.7); backdrop-filter: blur(5px); z-index: 300; }
+.modal-content { background: white; padding: 30px; border-radius: 20px; text-align: center; width: 90%; max-width: 400px; box-shadow: 0 15px 35px rgba(0,0,0,0.3); }
+.error-foto-caja { background: #fdf2e9; border: 2px dashed #e67e22; padding: 20px; border-radius: 15px; margin-bottom: 15px; }
+.error-icono { font-size: 2.5rem; color: #e67e22; margin-bottom: 10px; }
+.texto-sin-foto { font-weight: 600; font-size: 1.2rem; color: #d35400; margin-bottom: 5px; }
+.subtexto-error { font-size: 0.9rem; color: #7f8c8d; }
+.texto-despedida { margin-bottom: 15px; font-size: 2rem; color: var(--primary-text); }
+.close-btn { background: #e74c3c; color: white; border: none; padding: 10px 25px; border-radius: 50px; cursor: pointer; font-family: 'Poppins', sans-serif; font-weight: 600; }
+
+/* === ASSETS & UI === */
+#icono-musica { position: fixed; top: 15px; right: 15px; color: var(--primary-text); opacity: 0.5; z-index: 50; }
+#btn-90s { position: fixed; top: 15px; right: 50px; color: var(--primary-text); font-size: 1.3rem; opacity: 0.5; z-index: 50; cursor: pointer; transition: 0.3s; }
+#btn-90s:hover { opacity: 1; color: #d35400; }
+
+.pet-gif { position: fixed; bottom: -100px; width: 80px; z-index: 100; transition: bottom 1s cubic-bezier(0.175, 0.885, 0.32, 1.275); pointer-events: none; }
+.pet-gif.gatito-visible { bottom: 10px; }
+#gatito-der { right: 15px; }
+#gatito-izq { left: 15px; transform: scaleX(-1); }
+
+.particula { position: fixed; pointer-events: none; z-index: 5; animation: floatAnim 5s linear forwards; }
+@keyframes floatAnim {
+    0% { transform: translateY(0) scale(1) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(var(--particle-direction)) scale(1.5) rotate(45deg); opacity: 0; }
 }
 
-.seccion-foto-interior {
-    background: white;
-    padding: 30px;
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-    text-align: center;
-    max-width: 80%;
-}
-
-.foto-pareja {
-    max-width: 250px;
-    height: auto;
-    border-radius: 10px;
-    margin-bottom: 20px;
-}
-
-.texto-foto {
-    font-size: 1.8rem;
-    color: #3e2723;
-    margin-bottom: 20px;
-}
-
-#cerrar-foto {
-    background: transparent; border: 1px solid #ff4d4d; color: #ff4d4d;
-    padding: 5px 15px; border-radius: 5px; cursor: pointer;
-}
-
-
-/* --- ANIMACIÓN REVELADO FOTO --- */
-@keyframes revelar-foto {
-    from { opacity: 0; transform: translateY(50px) scale(0.9); }
-    to { opacity: 1; transform: translateY(0) scale(1); }
-}
-
-#contenedor-foto.visible {
-    animation: revelar-foto 1.5s ease-out forwards;
-}
-/* --- ADAPTACIÓN PARA MÓVILES (Celulares) --- */
 @media (max-width: 600px) {
-    .pergamino {
-        padding: 25px 20px; /* Menos bordes para que quepa más texto */
-        max-height: 75vh; /* Evita que la carta sea más alta que la pantalla */
-        overflow-y: auto; /* ¡MUY IMPORTANTE! Le permite hacer scroll si tu carta es larga */
-    }
-    
-    .titulo {
-        font-size: 2.5rem; /* Título un poco más pequeño para que no ocupe 3 líneas */
-    }
-    
-    .contenido-carta p {
-        font-size: 1rem; /* Texto un poquito más compacto */
-        line-height: 1.6;
-    }
-
-    .sello-cera {
-        padding: 10px 20px;
-    }
-
-    .sello-cera p {
-        font-size: 1.4rem;
-    }
-
-    .texto-sin-foto {
-        font-size: 1rem;
-        padding: 15px;
-    }
-}
-/* --- GATITO EN LA ESQUINA --- */
-#gatito-esquina {
-    position: fixed; /* Lo deja fijo aunque ella haga scroll */
-    bottom: 20px;    /* Distancia desde abajo */
-    right: 20px;     /* Distancia desde la derecha */
-    width: 100px;    /* Ajusta este tamaño si tu GIF es muy grande o pequeño */
-    z-index: 100;    /* Para que esté por encima del fondo */
-    opacity: 0;      /* Inicia oculto */
-    transition: opacity 2s ease;
-    pointer-events: none; /* Para que no interfiera si ella toca la pantalla ahí */
-}
-
-/* Esta clase se la agregaremos con JS cuando abra la carta */
-#gatito-esquina.gatito-visible {
-    opacity: 0.9;
-}
-#gatito-esquina-izq {
-    position: fixed;
-    bottom: 20px;
-    left: 20px;      /* ¡Aquí está la magia, lo pegamos a la izquierda! */
-    width: 100px;    /* Ajusta si este GIF es de distinto tamaño */
-    z-index: 100;
-    opacity: 0;
-    transition: opacity 2s ease;
-    pointer-events: none;
-    /* transform: scaleX(-1); */ /* Quita los de // si quieres que el gatito mire hacia el centro */
-}
-
-/* La clase para hacerlo aparecer */
-#gatito-esquina-izq.gatito-visible {
-    opacity: 0.9;
+    .glass-card { padding: 25px 20px; }
+    .titulo { font-size: 1.8rem; }
+    .contenido-carta p { font-size: 0.95rem; }
+    .contenido-carta { max-height: 50vh; }
+    .pet-gif { width: 70px; }
+    .pro-button { font-size: 0.9rem; padding: 10px 15px; }
 }
